@@ -31,16 +31,35 @@
             padding-bottom: 2%;
             background-color:#efefef;
           }
-          .navbar{
-            position: fixed;
+
+          .bg-4{
+            padding-top:2%;
+            padding-bottom: 2%;
+            background-color:white;
           }
 
+          .project{
+            width:50%;
+            margin:auto;
+            height:200px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            border-radius: 5px;
+            color:black;
+          }
+          .project:hover {
+              box-shadow: 0 30px 40px 0 rgba(0,0,0,0.2);
+          }
+          .row{
+            padding-top:2%;
+            padding-bottom: 2%;
+          }
 
       </style>
   </head>
   <body>
     <div class = "container-fluid bg-1 text-center" >
-      <nav class="navbar navbar-inverse navbar-right">
+      <nav class="navbar navbar-inverse ">
 <div class="container-fluid">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -50,34 +69,33 @@
     </button>
 
   </div>
-  <div class="collapse navbar-collapse navbar-right" id="myNavbar" >
+  <div class="collapse navbar-collapse " id="myNavbar" >
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#B3">About Me</a></li>
-      <li><a href="#">My Projects</a></li>
-      <li><a href="#">Ping Me</a></li>
+      <li><a href="#B2">About Me</a></li>
+      <li><a href="#B3">Resume</a></li>
+      <li><a href="#B4">My Projects</a></li>
+      <li><a href="#B5">Ping Me</a></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> GitHub</a></li>
-    </ul>
+
   </div>
 </div>
 </nav>
 
     </div>
-    <div class="container-fluid bg-2 text-center" id="B3">
+    <div class="container-fluid bg-2 text-center" id="B2">
       <h2>Who Am I?</h2>
       <blockquote>
           If there is one word that defines me, it's <i>passion</i>.What drives me more than anything is passion.
-          I aspire to be that person who accomplishes his dreams and doesn't  regret anything later in life.Apart from that I have a deep connection with music and cricket.
-          Music defines the other dimension in me which is beyond the physical.If you want to know me better, do get in touch with me and I sure will make a great companion.
+          Aspirations about life standards are pretty high.Apart from that I have a deep connection with music and cricket.
+          Music adds a different dimension to my personality .If you want to know me better, do get in touch with me and I sure will make a great companion.
           Not to forget, my role model is <i>Harvey Specter</i> from Suits.
           <footer>shyam</footer>
       </blockquote>
     </div>
-    <div class="container-fluid bg-3 text-center">
+    <div class="container-fluid bg-3 text-center" id="B3">
       <h2>Resume</h3>
-        <div class = "row">
+        <div class = "row" style="opacity:0.9">
             <div class = "col-sm-4">
                 <h3>Technologies</h3>
 
@@ -111,9 +129,66 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid bg-4 text-center" id="B4">
+        <h2>My Projects</h2>
+        <div class="row">
+            <div class="col-sm-4">
+              <a href="#">
+                <div class = "project" >
+                  <img src="key.jpg" width="100%" height="60%"/>
+                  <h4><b>Typing Speed Test</b></h4>
+                  <p>Java Swing</p>
+                </div>
+              </a>
+            </div>
+            <div class="col-sm-4">
+              <a href="#">
+              <div class = "project">
+                <img src="chat.png" width="80%" height="60%"/>
+                <h4><b>Chat Room</b></h4>
+                <p>Java Websockets and Bootstrap</p>
+              </div>
+            </a>
+            </div>
+            <div class="col-sm-4">
+              <a href="#">
+              <div class = "project">
+                <img src="music.jpg" width="80%" height="60%"/>
+                <h4><b>Music Instrument Classification</b></h4>
+                <p>Machine Learning- Matlab</p>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+              <a href="#">
+                <div class = "project" >
+                  <img src="file.png" width="100%" height="70%"/>
+                  <h4><b>File Sharing</b></h4>
+                  <p>Java Websockets  and J2EE</p>
+                </div>
+              </a>
+            </div>
+            <div class="col-sm-4">
+              <a href="#">
+              <div class = "project">
+                <img src="sis.png" width="80%" height="60%"/>
+                <h4><b>Student Information System</b></h4>
+                <p>Java Swing and MySQL</p>
+              </div>
+            </a>
+            </div>
+            <div class="col-sm-4">
+              <a href="#">
+              <div class = "project">
+                <img src="qs.jpg" width="50%" height="60%"/>
+                <h4><b>Coming Next</b></h4>
+                <p>any guess??</p>
+              </div>
+            </div>
+        </div>
+    </div>
     <script>
-
-
 
     </script>
 
