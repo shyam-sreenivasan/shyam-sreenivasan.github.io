@@ -1,117 +1,484 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Shyam's Website</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shyam Sreenivasan | Robotics & Systems Portfolio</title>
     <style>
-      .bg-1{
-          background-color:#ffffff;
-      }
-      .col-1{
-        padding-top:2%;
-        padding-bottom: 10%;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      }
-      .card {
-          /* Add shadows to create the "card" effect */
-          box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
-          transition: 0.3s;
-          width:60%;
-          height:40%;
-          margin-left:20%;
-          background-color:#efefef;
-      }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
 
-      /* On mouse-over, add a deeper shadow */
-      .card:hover {
-          box-shadow: 0 30px 40px 0 rgba(0,0,0,0.2);
-      }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
 
-      /* Add some padding inside the card container */
-      .mycontainer {
-          padding: 2px 16px;
-      }
+        /* Animated background particles */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-      .buttons{
+        .particle {
+            position: absolute;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
 
-        float:right;
-        padding-top:2%;
-      }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-100px) translateX(50px); }
+            50% { transform: translateY(-50px) translateX(100px); }
+            75% { transform: translateY(-150px) translateX(-50px); }
+        }
 
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            transform: translateY(30px);
+        }
+
+        h1 {
+            font-size: 4em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #a0aec0;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .tagline {
+            font-size: 1.1em;
+            color: #718096;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Glass Card Effect */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 48px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #fff;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: #e2e8f0;
+            margin: 30px 0 15px;
+            font-weight: 600;
+        }
+
+        p {
+            color: #cbd5e0;
+            margin-bottom: 20px;
+        }
+
+        .meta {
+            color: #a0aec0;
+            font-size: 0.95em;
+            font-weight: 500;
+            margin-bottom: 15px;
+            padding: 8px 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 3px solid #667eea;
+            border-radius: 4px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #cbd5e0;
+        }
+
+        ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 1.5em;
+            line-height: 1;
+        }
+
+        /* Skills Tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            color: #e2e8f0;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.4) 100%);
+        }
+
+        /* Contact Links */
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Project Card Special Styling */
+        .project-card {
+            margin-bottom: 30px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: #764ba2;
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <div class="container-fluid bg-2 text-center">
-    <div class = "buttons">
-        <button type="button " class="btn btn-lg " data-toggle="modal" data-target="#myModal" id="butt" >About Me</button>
-        <button type="button " class="btn btn-lg " data-toggle="modal" data-target="#myModal1" id="butt1" >Technical</button>
-        <button type="button " class="btn btn-lg " data-toggle="modal" data-target="#myModal1" id="butt1" >Projects</button>
-        <button type="button " class="btn btn-lg " data-toggle="modal" data-target="#myModal1" id="butt2" >Non-Technical</button>
-      </div>
-    </div>
-      <div class="container-fluid bg-1 text-center">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
 
-          <div class="row">
-              <div class="col-md-6 col-1">
-                <div class="card">
-                  <img src="me.jpg" alt="Shyam" style="width:100%">
-                  <div class="mycontainer">
-                    <h4><b>Shyam Sreenivasan</b></h4>
-                    <p>Software Engineer</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-2">
+    <!-- Background Animation -->
+    <div class="bg-animation" id="bgAnimation"></div>
 
-                <!-- Modal -->
-                    <div id="myModal" class="modal fade" role="dialog">
-                      <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Modal Header</h4>
-                          </div>
-                          <div class="modal-body">
-                            <p>Some text in the modal.</p>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-              </div>
-          <!-- Modal -->
-              <div id="myModal1" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Modal Header</h4>
-                    </div>
-                    <div class="modal-body">
-                      <p>Some text in the modal.</p>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Shyam Sreenivasan</h1>
+            <p class="subtitle">MS Robotics @ Northeastern University | Robotics Software Engineer | Systems & ML Integration</p>
+            <p class="tagline">Building scalable, reliable systems at the intersection of robotics, machine learning, and real-world autonomy.</p>
         </div>
-          </div>
-      </div>
-  </body>
+
+        <!-- About Me -->
+        <div class="card" data-animate>
+            <h2>About Me</h2>
+            <p>
+                I am a robotics graduate student at Northeastern University with over seven years of prior industry experience
+                as a software and machine learning engineer. My background includes designing and operating production-scale
+                distributed systems, real-time data pipelines, and ML platforms for anomaly detection and forecasting.
+            </p>
+            <p>
+                I am intentionally transitioning into robotics and autonomy to apply systems thinking to physical AI —
+                focusing on reliability, scalability, and safety in real-world robotic systems. My interests span motion
+                planning, control, simulation-driven learning, and the infrastructure required to deploy and monitor
+                autonomy at scale.
+            </p>
+        </div>
+
+        <!-- Experience Summary -->
+        <div class="card" data-animate>
+            <h2>Experience Summary</h2>
+            <ul>
+                <li>7+ years building and operating low-latency, fault-tolerant distributed systems in production</li>
+                <li>Hands-on experience with real-time ML pipelines for anomaly detection and forecasting</li>
+                <li>Strong foundation in robotics mechanics, control, planning, and simulation through graduate coursework and projects</li>
+                <li>Systems-first approach to robotics: observability, reliability, data pipelines, and evaluation workflows</li>
+            </ul>
+        </div>
+
+        <!-- Projects -->
+        <div class="card" data-animate>
+            <h2>Representative Projects & Case Studies</h2>
+
+            <div class="project-card">
+                <h3>Motion Planning for Ackermann Vehicles using Dubins-Constrained RRT Variants</h3>
+                <p class="meta"><strong>Class of problem:</strong> Motion planning, nonholonomic constraints, sampling-based planning</p>
+                <p>
+                    Developed and evaluated Dubins-constrained motion planners (RRT, Bi-RRT, P-RRT*) for Ackermann-steered vehicles
+                    across 300 simulation trials. Analyzed trade-offs between feasibility, planning time, and computational overhead
+                    in nonholonomic planning.
+                </p>
+                <p>
+                    Identified BiRRT*-Dubins as the optimal planner, achieving a 10× speedup (0.043s average runtime) with a 100%
+                    success rate, while quantifying a 292% computational overhead relative to holonomic planning.
+                </p>
+                <p><strong>Key learnings:</strong> Constraint-aware planning, empirical evaluation at scale, and performance trade-offs in real-time planners.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Learning from Long-Tail Driving Scenarios in Simulation</h3>
+                <p class="meta"><strong>Class of problem:</strong> Simulation-based learning, reinforcement / imitation learning, rare-event analysis</p>
+                <p>
+                    Building an end-to-end pipeline using the CARLA simulator to surface rare and safety-critical driving scenarios.
+                    The system focuses on identifying long-tail events and improving agent behavior through reinforcement and
+                    imitation learning.
+                </p>
+                <p>
+                    Emphasis is placed on data collection, scenario mining, evaluation workflows, and policy improvement rather
+                    than purely algorithmic novelty.
+                </p>
+                <p><strong>Key learnings:</strong> Long-tail data challenges, simulation realism limits, and evaluation-driven autonomy development.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Real-Time Kinematics and Trajectory Control for UR5 6-DOF Robot</h3>
+                <p class="meta"><strong>Class of problem:</strong> Robot kinematics, control, real-time systems</p>
+                <p>
+                    Implemented a complete kinematic and control framework for a UR5 6-DOF manipulator. Replaced an unreliable
+                    iterative inverse kinematics solver with a differential velocity-level controller to enable stable,
+                    real-time trajectory execution.
+                </p>
+                <p>
+                    Successfully executed circular, square, and sinusoidal trajectories with sub-3mm tracking accuracy,
+                    supported by interactive visualization of joint states and end-effector pose.
+                </p>
+                <p><strong>Key learnings:</strong> Numerical stability, control-loop design, and real-time execution constraints.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Production ML Pipelines for Anomaly Detection & Forecasting (Industry)</h3>
+                <p class="meta"><strong>Class of problem:</strong> Distributed systems, streaming ML, observability</p>
+                <p>
+                    Designed and operated large-scale ML and data pipelines for unsupervised anomaly detection and time-series
+                    forecasting over high-volume telemetry data. Implemented alert clustering and correlation techniques that
+                    reduced alert noise by 20% and improved incident triage and MTTR.
+                </p>
+                <p>
+                    Optimized microservices-based ingestion pipelines, reducing data ingestion latency by 20% and enabling
+                    faster real-time analysis. Integrated monitoring and observability pipelines using Prometheus and Grafana
+                    for production diagnostics.
+                </p>
+                <p><strong>Key learnings:</strong> Reliability at scale, observability-driven debugging, and ML system lifecycle management.</p>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="card" data-animate>
+            <h2>Skills & Tools</h2>
+            <div class="skills-container">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">ROS2</span>
+                <span class="skill-tag">Gazebo</span>
+                <span class="skill-tag">OpenCV</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">scikit-learn</span>
+                <span class="skill-tag">Kafka</span>
+                <span class="skill-tag">RabbitMQ</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Kubernetes</span>
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">Prometheus</span>
+                <span class="skill-tag">Grafana</span>
+                <span class="skill-tag">Motion Planning</span>
+                <span class="skill-tag">Robot Control</span>
+                <span class="skill-tag">Simulation</span>
+                <span class="skill-tag">Real-Time Systems</span>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="card" data-animate>
+            <h2>Contact</h2>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/shyam-sreenivasan/" target="_blank">
+                    <span>📱</span> LinkedIn
+                </a>
+                <a href="mailto:shyamreeni.612@gmail.com">
+                    <span>✉️</span> Email
+                </a>
+                <a href="https://github.com/shyam-sreenivasan" target="_blank">
+                    <span>💻</span> GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create animated background particles
+        const bgAnimation = document.getElementById('bgAnimation');
+        for (let i = 0; i < 15; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 150 + 50;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+            bgAnimation.appendChild(particle);
+        }
+
+        // Scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-animate]').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Progress bar on scroll
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Smooth scroll for better animation performance
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
 </html>
