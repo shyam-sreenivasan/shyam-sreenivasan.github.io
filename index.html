@@ -261,18 +261,10 @@
         }
 
         ul li {
-            padding: 10px 0 10px 35px;
+            padding: 10px 0;
             position: relative;
             color: #d4d4d8;
             line-height: 1.8;
-        }
-
-        ul li::before {
-            content: '▸';
-            position: absolute;
-            left: 10px;
-            color: #6366f1;
-            font-size: 1.3em;
         }
 
         .project-link {
@@ -360,6 +352,118 @@
             transition: width 0.1s ease;
         }
 
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            padding: 15px 0;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 14, 39, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border-bottom-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 1.3em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 0;
+            align-items: center;
+            list-style: none;
+        }
+
+        .navbar-menu li:not(:last-child)::after {
+            content: '|';
+            color: rgba(161, 161, 170, 0.3);
+            margin: 0 15px;
+        }
+
+        .navbar-link {
+            color: #a1a1aa;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .navbar-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            color: #fff;
+        }
+
+        .navbar-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-link.active {
+            color: #a855f7;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: #a1a1aa;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover span {
+            background: #fff;
+        }
+
         /* Section Header with Link */
         .section-header {
             display: flex;
@@ -436,6 +540,33 @@
             .section-header {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            /* Mobile Menu */
+            .menu-toggle {
+                display: flex;
+            }
+
+            .navbar-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 14, 39, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            }
+
+            .navbar-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
             }
         }
 
@@ -602,13 +733,34 @@
     <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
 
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="#home" class="navbar-brand">SS</a>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="#about" class="navbar-link">About</a></li>
+                <li><a href="#projects" class="navbar-link">Projects</a></li>
+                <li><a href="#experience" class="navbar-link">Experience</a></li>
+                <li><a href="#skills" class="navbar-link">Skills</a></li>
+                <li><a href="#blogs" class="navbar-link">Blogs</a></li>
+                <li><a href="#videos" class="navbar-link">Videos</a></li>
+                <li><a href="#contact" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- Background Effects -->
     <div class="gradient-overlay"></div>
     <div class="grid-background"></div>
 
     <div class="container">
         <!-- Header -->
-        <div class="header">
+        <div class="header" id="home">
             <h1>Shyam Sreenivasan</h1>
             <p class="subtitle">MS Robotics @ Northeastern University | Robotics Software Engineer</p>
             <p class="tagline">Building scalable, reliable systems at the intersection of robotics, machine learning, and real-world autonomy.</p>
@@ -623,7 +775,7 @@
         </div>
 
         <!-- About Me -->
-        <div class="section" data-animate>
+        <div class="section" data-animate id="about">
             <h2>About Me</h2>
             <p>
                 I am a robotics graduate student at Northeastern University with over seven years of prior industry experience
@@ -642,7 +794,7 @@
         </div>
 
         <!-- Projects -->
-        <div class="section" data-animate>
+        <div class="section" data-animate id="projects">
             <h2>Representative Projects</h2>
 
             <div class="project-card">
@@ -657,7 +809,7 @@
                     <li><strong>Outcome:</strong> Identified BiRRT*-Dubins as optimal with 10× faster planning (0.043s average) and 100% success rate, while quantifying 292% computational overhead relative to holonomic planning</li>
                     <li><strong>Key learning:</strong> Constraint handling dominates performance more than sampling strategy in nonholonomic planning</li>
                 </ul>
-                <a href="https://github.com/shyams612/RRTStarVariantsComparisonOnAckermanLikeConstraint" class="project-link" target="_blank">View Project →</a>
+                <a href="https://github.com/shyams612/MobileRoboticsProjectTeam2" class="project-link" target="_blank">View Project →</a>
             </div>
 
             <div class="project-card">
@@ -692,8 +844,8 @@
         </div>
 
         <!-- Industry Systems Experience -->
-        <div class="section" data-animate>
-            <h2>Industry Systems Experience</h2>
+        <div class="section" data-animate id="experience">
+            <h2>Software Engineering Systems and AI/ML Experience</h2>
             <p>
                 In prior roles, I built and operated production-scale distributed systems and ML pipelines
                 handling high-volume telemetry and real-time decision-making. While the code is proprietary,
@@ -709,7 +861,7 @@
         </div>
 
         <!-- Skills -->
-        <div class="section" data-animate>
+        <div class="section" data-animate id="skills">
             <h2>Skills & Tools</h2>
             <div class="skills-container">
                 <span class="skill-tag">Python</span>
@@ -737,7 +889,7 @@
         </div>
 
         <!-- My Blogs -->
-        <div class="section" data-animate>
+        <div class="section" data-animate id="blogs">
             <div class="section-header">
                 <h2>My Blogs</h2>
                 <a href="https://medium.com/@shyamsreeni.612" class="section-link" target="_blank">
@@ -786,7 +938,7 @@
         </div>
 
         <!-- Tech Videos -->
-        <div class="section" data-animate>
+        <div class="section" data-animate id="videos">
             <div class="section-header">
                 <h2>Tech Videos</h2>
                 <a href="https://www.youtube.com/@minuteml9114" class="section-link" target="_blank">
@@ -835,7 +987,7 @@
         </div>
 
         <!-- Contact -->
-        <div class="section" data-animate>
+        <div class="section" data-animate id="contact">
             <h2>Contact</h2>
             <div class="contact-links">
                 <a href="https://www.linkedin.com/in/shyam-sreenivasan/" target="_blank">
@@ -881,13 +1033,58 @@
         // Smooth scroll
         document.documentElement.style.scrollBehavior = 'smooth';
 
+        // Navbar scroll effect and active link
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.navbar-link');
+        const sections = document.querySelectorAll('.section, .header');
+
+        window.addEventListener('scroll', () => {
+            // Add scrolled class to navbar
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Update active nav link based on scroll position
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navbarMenu = document.getElementById('navbarMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbarMenu.classList.remove('active');
+            });
+        });
+
         // Blog Carousel Functionality
         const track = document.getElementById('carouselTrack');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const dotsContainer = document.getElementById('carouselDots');
-        // Scope blog cards to the blog carousel track only (avoid picking up video cards)
-        const blogCards = track.querySelectorAll('.blog-card');
+        const blogCards = document.querySelectorAll('.blog-card');
         
         let currentIndex = 0;
         const totalBlogs = blogCards.length;
@@ -901,8 +1098,7 @@
             dotsContainer.appendChild(dot);
         }
 
-        // Scope dots to the blog dots container to avoid mixing with video dots
-        const dots = dotsContainer.querySelectorAll('.dot');
+        const dots = document.querySelectorAll('.dot');
 
         function updateCarousel() {
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
