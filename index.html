@@ -20,7 +20,6 @@
             font-size: 18px;
         }
 
-        /* Background Effects */
         body::before {
             content: '';
             position: fixed;
@@ -36,14 +35,13 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 80px 40px;
             position: relative;
             z-index: 1;
         }
 
-        /* Header */
         header {
             text-align: center;
             margin-bottom: 100px;
@@ -87,7 +85,88 @@
             text-decoration: underline;
         }
 
-        /* Timeline */
+        .profile-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .summary-card {
+            background: rgba(39, 39, 42, 0.5);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .summary-card h3 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .summary-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .summary-item .degree,
+        .summary-item .role {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #fafafa;
+            margin-bottom: 8px;
+        }
+
+        .summary-item .institution,
+        .summary-item .company {
+            font-size: 1.05em;
+            color: #a855f7;
+            margin-bottom: 5px;
+        }
+
+        .summary-item .year {
+            font-size: 0.95em;
+            color: #a1a1aa;
+        }
+
+        .split-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .section-header {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding-bottom: 20px;
+            border-bottom: 3px solid rgba(99, 102, 241, 0.2);
+        }
+
         .timeline {
             position: relative;
             padding-left: 50px;
@@ -128,14 +207,14 @@
         }
 
         .timeline-section h2 {
-            font-size: 2em;
+            font-size: 1.8em;
             font-weight: 600;
             margin-bottom: 10px;
             color: #fafafa;
         }
 
         .timeline-section h3 {
-            font-size: 1.4em;
+            font-size: 1.3em;
             font-weight: 600;
             color: #e4e4e7;
             margin-bottom: 15px;
@@ -143,7 +222,7 @@
         }
 
         .organization {
-            font-size: 1.15em;
+            font-size: 1.05em;
             color: #a1a1aa;
             margin-bottom: 20px;
         }
@@ -152,7 +231,7 @@
             color: #d4d4d8;
             margin-bottom: 20px;
             line-height: 1.8;
-            font-size: 1.05em;
+            font-size: 1em;
         }
 
         .timeline-section ul {
@@ -165,7 +244,7 @@
             padding-left: 25px;
             margin-bottom: 15px;
             color: #d4d4d8;
-            font-size: 1.05em;
+            font-size: 1em;
             line-height: 1.8;
         }
 
@@ -183,7 +262,7 @@
             margin-top: 15px;
             color: #a855f7;
             text-decoration: none;
-            font-size: 1.1em;
+            font-size: 1em;
             transition: all 0.3s ease;
         }
 
@@ -192,17 +271,16 @@
             text-decoration: underline;
         }
 
-        /* Project Images */
         .project-images {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
         }
 
         .project-image {
             width: 100%;
-            height: 400px;
+            height: 250px;
             background: rgba(39, 39, 42, 0.5);
             border: 2px solid rgba(99, 102, 241, 0.3);
             border-radius: 12px;
@@ -211,7 +289,7 @@
             align-items: center;
             justify-content: center;
             color: #a1a1aa;
-            font-size: 1.05em;
+            font-size: 0.9em;
             transition: all 0.3s ease;
         }
 
@@ -224,7 +302,7 @@
         .project-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
 
         .project-image video {
@@ -233,7 +311,10 @@
             object-fit: contain;
         }
 
-        /* Skills */
+        .skills-section {
+            margin-top: 100px;
+        }
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -256,17 +337,67 @@
             line-height: 1.9;
         }
 
-        /* Section Headers */
-        .section-header {
+        .contact-section {
+            margin-top: 80px;
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(39, 39, 42, 0.5);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 16px;
+        }
+
+        .contact-section h2 {
             font-size: 2.2em;
             font-weight: 700;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            padding-bottom: 20px;
-            border-bottom: 3px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .contact-items {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item span {
+            font-size: 1.1em;
+            color: #a1a1aa;
+            font-weight: 600;
+        }
+
+        .contact-item a {
+            color: #a855f7;
+            text-decoration: none;
+            font-size: 1.15em;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px;
+        }
+
+        .contact-item a:hover {
+            color: #6366f1;
+            border-color: rgba(99, 102, 241, 0.5);
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1200px) {
+            .split-container {
+                grid-template-columns: 1fr;
+                gap: 80px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -280,6 +411,39 @@
 
             h1 {
                 font-size: 2.5em;
+            }
+
+            .profile-summary {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .summary-card {
+                padding: 25px;
+            }
+
+            .summary-card h3 {
+                font-size: 1.4em;
+                margin-bottom: 20px;
+            }
+
+            .summary-item {
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+            }
+
+            .summary-item .degree,
+            .summary-item .role {
+                font-size: 1.05em;
+            }
+
+            .summary-item .institution,
+            .summary-item .company {
+                font-size: 0.95em;
+            }
+
+            .summary-item .year {
+                font-size: 0.85em;
             }
 
             .timeline {
@@ -296,6 +460,14 @@
 
             .project-images {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-items {
+                gap: 30px;
+            }
+
+            .contact-section {
+                padding: 40px 25px;
             }
         }
     </style>
@@ -315,123 +487,175 @@
             </div>
         </header>
 
-        <div class="timeline">
-            <!-- Current: Graduate Studies -->
-            <div class="timeline-section">
-                <div class="timeline-marker"></div>
-                <p class="period">Sept 2025 – May 2027</p>
-                <h2>MS Robotics</h2>
-                <p class="organization">Northeastern University, Boston, MA</p>
-                <p><strong>GPA:</strong> 3.7/4.0</p>
-                <p>Focusing on perception, motion planning, control theory, and simulation-based learning for autonomous systems. Building projects that bridge the gap between theoretical robotics and real-world deployment.</p>
-                <p><strong>Coursework:</strong> Mobile Robotics, Reinforcement Learning, Robot Mechanics and Control, Robot Sensing and Navigation</p>
-            </div>
-
-            <!-- Robotics Projects -->
-            <div class="timeline-section">
-                <div class="timeline-marker"></div>
-                <p class="period">2025 – 2026</p>
-                <h2>Robotics Projects</h2>
+        <div class="profile-summary">
+            <div class="summary-card">
+                <h3>Academic Experience</h3>
                 
-                <h3>Multi-Sensor Fusion Pipeline for Autonomous Vehicle Perception</h3>
-                <p class="period">Jan 2026</p>
-                <p>Developed multi-sensor validation pipeline for autonomous perception with KITTI dataset: synchronized Camera/LiDAR/GPS at 10Hz (3ms jitter), implemented calibrated projection (85% visibility, <5px error), and validated data quality across temporal/spatial/radiometric dimensions with automated quality gates.</p>
-                <div class="project-images">
-                    <div class="project-image">
-                        <img src="projects/multi-sensor1.png" alt="LiDAR point cloud projection">
-                    </div>
-                    <div class="project-image">
-                        <img src="projects/multi-sensor2.png" alt="Sensor calibration results">
+                <div class="summary-item">
+                    <div class="degree">Master of Science in Robotics</div>
+                    <div class="institution">Northeastern University, Boston, MA, USA</div>
+                    <div class="year">2025 - 2027 | GPA: 3.7/4.0</div>
+                    <div class="summary-description">
+                        <strong>Coursework:</strong> Mobile Robotics, Reinforcement Learning, Robot Mechanics and Control, Robot Sensing and Navigation
                     </div>
                 </div>
-                <a href="https://github.com/shyam-sreenivasan/KITTI-Perception-Pipeline" class="project-link" target="_blank">View on GitHub →</a>
 
-                <h3>2D Robot Navigation Simulator with LIDAR-Based Obstacle Avoidance</h3>
-                <p class="period">Dec 2025</p>
-                <p>Built Python navigation simulator integrating RRT* path planning with hierarchical control architecture (Manual, State Machine, P-Controller) using 360° LIDAR sensing and differential drive kinematics, achieving 90%+ goal-reaching success in obstacle-dense environments through multi-gain controller design.</p>
-                <div class="project-images">
-                    <div class="project-image">
-                        <img src="projects/navigation1.png" alt="Robot navigation simulation">
-                    </div>
-                    <div class="project-image">
-                        <video autoplay loop muted playsinline>
-                            <source src="projects/navigation2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                <div class="summary-item">
+                    <div class="degree">Bachelor of Engineering in Computer Science</div>
+                    <div class="institution">Anna University, Chennai, India</div>
+                    <div class="year">2013 - 2017</div>
+                    <div class="summary-description">
+                        <strong>Coursework:</strong> Data Structures with C, Operating Systems, Computer Networks, Microcontrollers, Artificial Intelligence
                     </div>
                 </div>
-                <a href="https://github.com/shyam-sreenivasan/MotionControlSimulation2DRobot" class="project-link" target="_blank">View on GitHub →</a>
-
-                <h3>Real-Time Kinematics and Trajectory Control for UR5 6-DOF Robot</h3>
-                <p class="period">Nov 2025</p>
-                <p>Replaced unreliable iterative IK solver with differential velocity-level controller, achieving sub-3mm trajectory accuracy across circular, square, and sine wave paths. Developed interactive visualization dashboard for real-time monitoring of joint states, velocities, and end-effector pose during trajectory execution.</p>
-                <div class="project-images">
-                    <div class="project-image">
-                        <img src="projects/ur5-1.png" alt="UR5 trajectory execution">
-                    </div>
-                    <div class="project-image">
-                        <video autoplay loop muted playsinline>
-                            <source src="projects/ur5-2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-                <a href="https://github.com/shyam-sreenivasan/UR5-Cobot-Kinematic-Analysis" class="project-link" target="_blank">View on GitHub →</a>
-
-                <h3>Motion Planning for Ackermann Vehicles (Dubins RRT Variants)</h3>
-                <p class="period">Nov 2025</p>
-                <p>Benchmarked three Dubins-constrained planners (RRT, Bi-RRT, RRT*) across 300 trials in diverse obstacle environments for nonholonomic Ackermann vehicles. Identified BiRRT*-Dubins as optimal with 10× faster execution (0.043s) and 100% success rate, quantifying 292% computational overhead of nonholonomic constraints.</p>
-                <div class="project-images">
-                    <div class="project-image">
-                        <img src="projects/ackermann1.png" alt="RRT path planning visualization">
-                    </div>
-                    <div class="project-image">
-                        <img src="projects/ackermann2.png" alt="Performance comparison chart">
-                    </div>
-                </div>
-                <a href="https://github.com/shyams612/RRTStarVariantsComparisonOnAckermanLikeConstraint" class="project-link" target="_blank">View on GitHub →</a>
             </div>
 
-            <!-- Industry Experience 2 -->
+            <div class="summary-card">
+                <h3>Industry Experience</h3>
+                
+                <div class="summary-item">
+                    <div class="role">Lead Software Engineer</div>
+                    <div class="company">Giottus Technologies Pvt Ltd., Chennai, India</div>
+                    <div class="year">Jul 2021 - May 2024</div>
+                </div>
+
+                <div class="summary-item">
+                    <div class="role">Machine Learning Engineer</div>
+                    <div class="company">CloudFabrix Software Pvt Ltd., Hyderabad, India</div>
+                    <div class="year">Dec 2018 - Nov 2021</div>
+                </div>
+
+                <div class="summary-item">
+                    <div class="role">Software Developer</div>
+                    <div class="company">Geazy Technologies LLP, Chennai, India</div>
+                    <div class="year">Nov 2017 - Dec 2018</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-container">
+            <h2 class="section-header">Robotics Projects</h2>
+            <div class="timeline">
+                <div class="timeline-section">
+                    <div class="timeline-marker"></div>
+                    <p class="period">Jan 2026</p>
+                    <h2>Multi-Sensor Fusion Pipeline for Autonomous Vehicle Perception</h2>
+                    <p>Developed multi-sensor validation pipeline for autonomous perception with KITTI dataset: synchronized Camera/LiDAR/GPS at 10Hz (3ms jitter), implemented calibrated projection (85% visibility, <5px error), and validated data quality across temporal/spatial dimensions with automated quality gates—establishing production-ready foundation for object detection and tracking.</p>
+                    <div class="project-images">
+                        <div class="project-image">
+                            <img src="projects/multi-sensor1.png" alt="LiDAR point cloud projection">
+                        </div>
+                        <div class="project-image">
+                            <img src="projects/multi-sensor2.png" alt="Sensor calibration results">
+                        </div>
+                    </div>
+                    <a href="https://github.com/shyam-sreenivasan/KITTI-Perception-Pipeline" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+
+                <div class="timeline-section">
+                    <div class="timeline-marker"></div>
+                    <p class="period">Dec 2025</p>
+                    <h2>2D Robot Navigation Simulator with LIDAR-Based Obstacle Avoidance</h2>
+                    <p>Built Python navigation simulator integrating RRT* path planning with hybrid adaptive controllers and 360° LIDAR for real-time collision avoidance, achieving 90%+ goal-reaching success in obstacle-dense scenarios.</p>
+                    <div class="project-images">
+                        <div class="project-image">
+                            <img src="projects/navigation1.png" alt="Robot navigation simulation">
+                        </div>
+                        <div class="project-image">
+                            <video autoplay loop muted playsinline>
+                                <source src="projects/navigation2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    <a href="https://github.com/shyam-sreenivasan/MotionControlSimulation2DRobot" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+
+                <div class="timeline-section">
+                    <div class="timeline-marker"></div>
+                    <p class="period">Nov 2025</p>
+                    <h2>Real-Time Kinematics and Trajectory Control for UR5 6-DOF Robot</h2>
+                    <ul>
+                        <li>Replaced unreliable iterative IK solver with differential velocity-level controller, achieving sub-3mm trajectory accuracy across circular, square, and sine wave paths</li>
+                        <li>Developed interactive visualization dashboard for real-time monitoring of joint states, velocities, and end-effector pose during trajectory execution</li>
+                    </ul>
+                    <div class="project-images">
+                        <div class="project-image">
+                            <img src="projects/ur5-1.png" alt="UR5 trajectory execution">
+                        </div>
+                        <div class="project-image">
+                            <video autoplay loop muted playsinline>
+                                <source src="projects/ur5-2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    <a href="https://github.com/shyam-sreenivasan/UR5-Cobot-Kinematic-Analysis" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+
+                <div class="timeline-section">
+                    <div class="timeline-marker"></div>
+                    <p class="period">Nov 2025</p>
+                    <h2>Motion Planning for Ackermann Vehicles using Dubins Constrained RRT* Variants</h2>
+                    <ul>
+                        <li>Benchmarked three Dubins-constrained planners (RRT, Bi-RRT, P-RRT*) across 300 trials in diverse obstacle environments for nonholonomic Ackermann vehicles</li>
+                        <li>Identified BiRRTStarDubins as optimal with 10× faster execution (0.043s) and 100% success rate, quantifying 292% computational overhead of nonholonomic constraints</li>
+                    </ul>
+                    <div class="project-images">
+                        <div class="project-image">
+                            <img src="projects/ackermann1.png" alt="RRT path planning visualization">
+                        </div>
+                        <div class="project-image">
+                            <img src="projects/ackermann2.png" alt="Performance comparison chart">
+                        </div>
+                    </div>
+                    <a href="https://github.com/shyams612/RRTStarVariantsComparisonOnAckermanLikeConstraint" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-header">Industry Experience</h2>
+        <div class="timeline">
             <div class="timeline-section">
                 <div class="timeline-marker"></div>
                 <p class="period">Jul 2021 – May 2024</p>
                 <h2>Lead Software Engineer</h2>
-                <p class="organization">Giottus Technologies Pvt Ltd., Chennai, India</p>
+                <p class="organization">Giottus Technologies, Chennai</p>
                 <ul>
-                    <li>Overcame capacity constraints during 10× traffic spikes by designing distributed microservices architecture, achieving 300% throughput improvement and reducing downtime by 45%</li>
-                    <li>Eliminated 4-hour deployment cycles by implementing Docker/Kubernetes infrastructure, reducing deployment times 70% with horizontal auto-scaling</li>
-                    <li>Streamlined feature delivery by leading Agile sprints with code reviews, accelerating releases by 40% while reducing production defects by 25%</li>
-                    <li>Solved monitoring blind spots by integrating Prometheus/Grafana pipelines with automated alerting, achieving 99.9% uptime and reducing incident detection time by 30%</li>
+                    <li>Designed distributed microservices architecture, achieving 300% throughput improvement and reducing downtime by 45%</li>
+                    <li>Implemented Docker/Kubernetes infrastructure, reducing deployment times 70% with horizontal auto-scaling</li>
+                    <li>Led Agile sprints accelerating releases by 40% while reducing production defects by 25%</li>
+                    <li>Integrated Prometheus/Grafana pipelines achieving 99.9% uptime</li>
                 </ul>
             </div>
 
-            <!-- Industry Experience 1 -->
             <div class="timeline-section">
                 <div class="timeline-marker"></div>
                 <p class="period">Dec 2018 – Nov 2021</p>
                 <h2>Machine Learning Engineer</h2>
-                <p class="organization">CloudFabrix Software Pvt Ltd., Hyderabad, India</p>
+                <p class="organization">CloudFabrix Software, Hyderabad</p>
                 <ul>
-                    <li>Reduced alert fatigue by applying unsupervised clustering on large-scale telemetry datasets, incorporating data quality checks and validation rules to filter noisy and incomplete signals, lowering alert volume by 20%</li>
-                    <li>Improved system reliability by deploying Prophet-based forecasting models on versioned time-series datasets, achieving 85% prediction accuracy and reducing unplanned downtime by 30%</li>
-                    <li>Built reusable, versioned ML pipeline libraries for data ingestion, feature extraction, dataset validation, and deployment, reducing model-to-production time by 40% across teams</li>
-                    <li>Resolved data ingestion bottlenecks by designing real-time microservice pipelines with automated data validation and schema checks, reducing latency by 20% and enabling sub-second anomaly detection</li>
+                    <li>Applied unsupervised clustering on large-scale telemetry datasets, lowering alert volume by 20%</li>
+                    <li>Deployed Prophet-based forecasting models achieving 85% prediction accuracy and reducing downtime by 30%</li>
+                    <li>Built reusable ML pipeline libraries reducing model-to-production time by 40%</li>
+                    <li>Designed real-time microservice pipelines reducing latency by 20%</li>
                 </ul>
             </div>
 
-            <!-- Education -->
             <div class="timeline-section">
                 <div class="timeline-marker"></div>
-                <p class="period">2013 – May 2017</p>
-                <h2>Bachelor of Engineering in Computer Science</h2>
-                <p class="organization">Anna University, Chennai, India</p>
-                <p><strong>Coursework:</strong> Data Structures with C, Operating Systems, Computer Networks, Microcontrollers, Artificial Intelligence</p>
+                <p class="period">Nov 2017 – Dec 2018</p>
+                <h2>Software Developer</h2>
+                <p class="organization">Geazy Technologies, Chennai</p>
+                <ul>
+                    <li>Re-engineered core platform components, improving performance by 15% and reducing costs by 10%</li>
+                    <li>Built efficient data transformation parsers for large-scale datasets</li>
+                    <li>Resolved production issues in chatbot integrations, reducing downtime by 40%</li>
+                </ul>
             </div>
         </div>
 
-        <!-- Skills Section -->
-        <div style="margin-top: 100px;">
+        <div class="timeline-container" style="margin-top: 80px;">
             <h2 class="section-header">Technical Skills</h2>
             <div class="skills-grid">
                 <div class="skill-category">
@@ -445,6 +669,20 @@
                 <div class="skill-category">
                     <h4>Cloud & DevOps</h4>
                     <p>AWS (EC2, Lambda, S3), Docker, Jenkins, Linux, Git, Prometheus, Grafana, ELK Stack</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Get In Touch</h2>
+            <div class="contact-items">
+                <div class="contact-item">
+                    <span>Email</span>
+                    <a href="mailto:sreenivasan.sh@northeastern.edu">sreenivasan.sh@northeastern.edu</a>
+                </div>
+                <div class="contact-item">
+                    <span>LinkedIn</span>
+                    <a href="https://www.linkedin.com/in/shyam-sreenivasan/" target="_blank">linkedin.com/in/shyam-sreenivasan</a>
                 </div>
             </div>
         </div>
