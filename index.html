@@ -37,10 +37,27 @@
         }
 
         header {
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 50px;
             margin-bottom: 100px;
             padding-bottom: 50px;
             border-bottom: 3px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(99, 102, 241, 0.6);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
         }
 
         h1 {
@@ -59,9 +76,17 @@
             margin-bottom: 5px;
         }
 
+        .about-me {
+            font-size: 1.05em;
+            color: #c4c4cc;
+            line-height: 1.7;
+            margin-top: 14px;
+            max-width: 680px;
+        }
+
         .contact-links {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 30px;
             flex-wrap: wrap;
             margin-top: 10px;
@@ -392,6 +417,56 @@
             transform: translateY(-2px);
         }
 
+        .tabs-container {
+            margin-top: 80px;
+        }
+
+        .tabs-header {
+            display: flex;
+            gap: 0;
+            margin-bottom: 40px;
+            border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #a1a1aa;
+            font-size: 1.1em;
+            font-family: inherit;
+            padding: 14px 32px;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.2s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .tab-btn:hover {
+            color: #e4e4e7;
+        }
+
+        .tab-btn.active {
+            color: #a855f7;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
         @media (max-width: 1200px) {
             .split-container { grid-template-columns: 1fr; gap: 80px; }
         }
@@ -400,6 +475,9 @@
             body { font-size: 16px; }
             .container { padding: 50px 25px; }
             h1 { font-size: 2.5em; }
+            header { flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+            .header-text { align-items: center; }
+            .contact-links { justify-content: center; }
             .profile-summary { grid-template-columns: 1fr; gap: 20px; }
             .summary-card { padding: 25px; }
             .summary-card h3 { font-size: 1.4em; margin-bottom: 20px; }
@@ -419,15 +497,18 @@
 <body>
     <div class="container">
         <header>
-            <h1>Shyam Sreenivasan</h1>
-            <p class="subtitle">MS Robotics @ Northeastern University</p>
-            <p class="subtitle">Experienced Software Engineer building intelligent systems at the intersection of robotics and ML</p>
-            <div class="contact-links">
-                <a href="mailto:sreenivasan.sh@northeastern.edu">Email</a>
-                <a href="https://www.linkedin.com/in/shyam-sreenivasan/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/shyam-sreenivasan" target="_blank">GitHub</a>
-                <a href="https://medium.com/@shyamsreeni.612" target="_blank">Medium</a>
-                <a href="https://www.youtube.com/@minuteml9114" target="_blank">YouTube</a>
+            <img class="profile-photo" src="profilepic.png" alt="Shyam Sreenivasan">
+            <div class="header-text">
+                <h1>Shyam Sreenivasan</h1>
+                <p class="subtitle">MS Robotics @ Northeastern University</p>
+                <p class="about-me">I build and ship production systems at scale — 7 years of industry experience across ML platforms, distributed infrastructure, and engineering leadership at startups, scaling systems to over a million users. Now bringing that same technical depth and ownership mindset to robotics through an MS at Northeastern, focused on autonomous systems, perception, and robot learning.</p>
+                <div class="contact-links">
+                    <a href="mailto:sreenivasan.sh@northeastern.edu">Email</a>
+                    <a href="https://www.linkedin.com/in/shyam-sreenivasan/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/shyam-sreenivasan" target="_blank">GitHub</a>
+                    <a href="https://medium.com/@shyamsreeni.612" target="_blank">Medium</a>
+                    <a href="https://www.youtube.com/@minuteml9114" target="_blank">YouTube</a>
+                </div>
             </div>
         </header>
 
@@ -467,15 +548,45 @@
                 <div class="summary-item">
                     <div class="role">Software Developer</div>
                     <div class="company">Geazy Technologies LLP, Chennai, India</div>
-                    <div class="year">Nov 2017 – Dec 2018</div>
+                    <div class="year">Nov 2017 – Nov 2018</div>
                 </div>
             </div>
         </div>
 
-        <!-- ROBOTICS PROJECTS -->
-        <div class="timeline-container">
-            <h2 class="section-header">Robotics Projects</h2>
+        <!-- TABBED SECTION -->
+        <div class="tabs-container">
+            <div class="tabs-header">
+                <button class="tab-btn" id="tab-work" onclick="switchTab('work')">Work Experience</button>
+                <button class="tab-btn" id="tab-projects" onclick="switchTab('projects')">Robotics Projects</button>
+            </div>
+
+            <div class="tab-panel" id="panel-projects">
             <div class="timeline">
+
+                <div class="timeline-section">
+                    <div class="timeline-marker"></div>
+                    <p class="period">Apr 2026</p>
+                    <h2>Stereo Camera Health Monitor for ORB-SLAM3</h2>
+                    <p class="organization">Course: EECE 5554 Robot Sensing and Navigation, Northeastern University</p>
+                    <ul>
+                        <li>Built an end-to-end SLAM health monitoring pipeline on TUM-VI — sweeping five image degradation types (Gaussian blur, motion blur, salt-and-pepper, brightness, occlusion) across ORB-SLAM3 to characterize ATE failure thresholds</li>
+                        <li>Trained a <span class="highlight">ResNet18+GRU model</span> on 20-frame stereo windows with self-supervised severity labels derived from SLAM trajectory outputs; severity metric triggers automatic switch to mono-inertial mode at degradation threshold</li>
+                        <li>Results: <span class="metric">Val MAE 0.135</span>, <span class="metric">80% crossover classification accuracy</span> (65 windows, 13 conditions); key finding: blur produces learnable warning zones while salt-and-pepper and occlusion produce binary cliffs absorbed by RANSAC</li>
+                    </ul>
+                    <a href="https://github.com/adenm-10/eece5554_final_project/tree/pipeline" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+
+                <div class="timeline-section">
+                    <div class="timeline-marker"></div>
+                    <p class="period">Apr 2026</p>
+                    <h2>Deep RL Policy Training: PPO, A2C, DQN with Reward Shaping</h2>
+                    <p class="organization">Course: CS 5180 Reinforcement Learning, Northeastern University</p>
+                    <ul>
+                        <li>Implemented <span class="highlight">PPO, A2C, and DQN from scratch</span> in PyTorch with GAE, entropy regularization, and clipped surrogate objectives; ablated four reward shaping strategies (hyperbolic, threshold, exponential, asymmetric) across risk-stratified simulation environments</li>
+                        <li>Key finding: PPO clip and long rollouts are <span class="highlight">interdependent stabilizers</span> — neither alone sufficient for long-horizon policy stability; produced a research-quality ablation study with quantitative comparisons across all algorithm and reward variants</li>
+                    </ul>
+                    <a href="https://github.com/shyams612/FlappyBird_RL" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
 
                 <div class="timeline-section">
                     <div class="timeline-marker"></div>
@@ -540,48 +651,35 @@
                 </div>
 
             </div>
-        </div>
+            </div>
 
-        <!-- INDUSTRY EXPERIENCE -->
-        <h2 class="section-header" style="margin-top: 80px;">Work Experience</h2>
-        <div class="timeline">
+            <div class="tab-panel" id="panel-work">
+            <div class="timeline">
 
             <!-- Giottus -->
             <div class="timeline-section">
                 <div class="timeline-marker"></div>
                 <p class="period">Jul 2021 – May 2024</p>
-                <h2>Lead Software Engineer</h2>
+                <h2>Lead Software Engineer / Team Lead</h2>
                 <p class="organization">Giottus Technologies Pvt Ltd., Chennai, India</p>
-                <span class="role-tag">Distributed Systems · Real-Time Infrastructure · Engineering Leadership</span>
+                <span class="role-tag">Distributed Systems · Platform Architecture · Engineering Leadership</span>
 
-                <p class="exp-subheader">Real-Time Systems & Connectivity</p>
+                <p class="exp-subheader">Leadership & Org Impact</p>
                 <ul>
-                    <li>Built <span class="highlight">WebSocket and gRPC-based real-time communication</span> infrastructure for a live cryptocurrency trading platform, enabling low-latency persistent connections between clients, backend services, and third-party exchange APIs</li>
-                    <li>Implemented <span class="highlight">retry logic, message buffering, and fallback mechanisms</span> for order processing pipelines over unreliable third-party connections — ensuring fault-tolerant, high-throughput transaction execution</li>
+                    <li>Joined as an early engineer on a sub-10 team; grew into technical lead owning end-to-end platform delivery as the company scaled to <span class="metric">1M+ customers</span> — drove hiring, interview rubrics, and onboarding playbooks</li>
+                    <li>Led Agile delivery across a <span class="metric">10+ person team</span> — mentored engineers on system design and clean architecture, pioneered Git Flow and CI/CD practices org-wide, accelerating release cadence by <span class="metric">40%</span> and reducing defects by <span class="metric">25%</span></li>
                 </ul>
 
-                <p class="exp-subheader">Distributed Architecture & Scale</p>
+                <p class="exp-subheader">Systems Design & Scale</p>
                 <ul>
-                    <li>Designed <span class="highlight">production-scale distributed microservices</span> with Kafka, Docker, and Kubernetes handling <span class="metric">10× traffic spikes</span> — achieving <span class="metric">300% throughput improvement</span>, <span class="metric">70% faster deployments</span>, and <span class="metric">45% downtime reduction</span></li>
-                    <li>Led <span class="highlight">monolith-to-microservices migration</span>; pioneered Git Flow adoption and drove CI/CD practices across the engineering org</li>
+                    <li>Designed and owned production-scale distributed systems using <span class="highlight">Java, Spring Boot, Kafka, Docker, and Kubernetes</span> — achieving <span class="metric">300% throughput improvement</span> and <span class="metric">45% downtime reduction</span> under <span class="metric">10× traffic spikes</span></li>
+                    <li>Led <span class="highlight">monolith-to-microservices migration</span> — decomposed a tightly coupled codebase into independently deployable services; integrated Prometheus/Grafana observability achieving <span class="metric">99.9% uptime</span> and <span class="metric">30% faster incident detection</span></li>
                 </ul>
 
-                <p class="exp-subheader">Security & Authentication</p>
+                <p class="exp-subheader">Implementation & Execution</p>
                 <ul>
-                    <li>Designed and built <span class="highlight">JWT-based authentication and RBAC authorization</span> system from scratch using Spring Boot, including API key lifecycle management for third-party integrations (KYC providers, exchange APIs)</li>
-                    <li>Integrated confidence-scored <span class="highlight">KYC verification system</span> with conservative approval thresholds and mandatory human review workflows for uncertain decisions — combining automated ML scoring with structured human oversight</li>
-                </ul>
-
-                <p class="exp-subheader">Reliability, Testing & Observability</p>
-                <ul>
-                    <li>Integrated <span class="highlight">Prometheus/Grafana and ELK Stack</span> with automated alerting, achieving <span class="metric">99.9% uptime</span> and <span class="metric">30% faster incident detection</span>; diagnosed and resolved a race condition in live wallet updates via transaction replay and row-level locking</li>
-                    <li>Drove <span class="highlight">test-driven development</span> culture — introduced scenario-based unit testing, parallel transaction simulation tests, QA/staging environments, and A/B rollout strategies</li>
-                </ul>
-
-                <p class="exp-subheader">Product & Leadership</p>
-                <ul>
-                    <li>Delivered end-to-end crypto platform features (KYC automation, Staking, SIP, Price Alerts, Crypto Baskets) driving <span class="metric">25% user adoption growth</span> and <span class="metric">10% revenue increase</span></li>
-                    <li>Built <span class="highlight">internal CRM system from scratch</span> for the operations team; mentored engineers on SOLID principles and design patterns, accelerating releases by <span class="metric">40%</span> while reducing defects by <span class="metric">25%</span></li>
+                    <li>Built <span class="highlight">gRPC/WebSocket communication layers</span> and REST APIs with full lifecycle management; implemented JWT-based auth and RBAC from scratch; integrated Stripe, KYC providers, and exchange APIs with key lifecycle management</li>
+                    <li>Drove <span class="highlight">TDD culture</span> with JUnit scenario testing, parallel wallet simulation tests, and A/B rollouts; diagnosed a race condition in live wallet updates via transaction replay and resolved with row-level locking</li>
                 </ul>
             </div>
 
@@ -615,7 +713,7 @@
             <!-- Geazy -->
             <div class="timeline-section">
                 <div class="timeline-marker"></div>
-                <p class="period">Nov 2017 – Dec 2018</p>
+                <p class="period">Nov 2017 – Nov 2018</p>
                 <h2>Software Developer</h2>
                 <p class="organization">Geazy Technologies LLP, Chennai, India</p>
                 <ul>
@@ -623,6 +721,7 @@
                     <li>Built efficient data transformation parsers in PHP for large-scale data processing pipelines</li>
                     <li>Resolved production issues in chatbot integrations, reducing downtime by <span class="metric">40%</span></li>
                 </ul>
+            </div>
             </div>
 
         </div>
@@ -674,5 +773,14 @@
         </div>
 
     </div>
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('panel-' + tab).classList.add('active');
+            document.getElementById('tab-' + tab).classList.add('active');
+        }
+        switchTab('work');
+    </script>
 </body>
 </html>
