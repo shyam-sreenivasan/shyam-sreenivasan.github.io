@@ -12,7 +12,7 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shyam Sreenivasan | Robotics Engineer</title>
+    <title>Shyam Sreenivasan | Lead Software Engineer · Data, ML & Robotics Infrastructure</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -80,9 +80,10 @@
         }
 
         .subtitle {
-            font-size: 1.3em;
+            font-size: clamp(0.7em, 1.1vw, 1.1em);
             color: #a1a1aa;
             margin-bottom: 5px;
+            white-space: nowrap;
         }
 
         .about-me {
@@ -90,7 +91,14 @@
             color: #c4c4cc;
             line-height: 1.7;
             margin-top: 14px;
-            max-width: 680px;
+        }
+
+        .about-me p {
+            margin-bottom: 14px;
+        }
+
+        .about-me p:last-child {
+            margin-bottom: 0;
         }
 
         .contact-links {
@@ -509,8 +517,13 @@
             <img class="profile-photo" src="profilepic.png" alt="Shyam Sreenivasan">
             <div class="header-text">
                 <h1>Shyam Sreenivasan</h1>
-                <p class="subtitle">Candidate for MS in Robotics @ Northeastern University</p>
-                <p class="about-me">I build and ship production systems at scale — 7 years of industry experience across ML platforms, distributed infrastructure, and engineering leadership at startups, scaling systems to over a million users. Now bringing that same technical depth and ownership mindset to robotics through an MS at Northeastern, focused on autonomous systems, perception, and robot learning.</p>
+                <p class="subtitle">Lead Software Engineer · Data, ML &amp; Robotics Infrastructure · Distributed Systems · 7 yrs production · MS Robotics '26</p>
+                <div class="about-me">
+                    <p>Most teams can build the system. The part that breaks at scale—pipelines under load, observability that catches failures before users do, infrastructure that survives a 10× spike—that's where I've spent the last 7 years.</p>
+                    <p>At Giottus, I joined a sub-10 person team and helped scale a cryptocurrency trading platform to over 1 million customers. I built Kafka-based event pipelines, Kubernetes microservices, observability systems, and real-time WebSocket/gRPC infrastructure supporting production workloads with 99.9% uptime. I later led the team, owning delivery, mentoring engineers, and driving execution across multiple initiatives. At CloudFabrix, I built core ML platform components: ingestion frameworks, clustering pipelines that cut alert noise by ~90%, and model registry tooling before the category existed.</p>
+                    <p>Now completing an MS in Robotics at Northeastern (Dec 2026) — shipping at the intersection of systems and perception. Targeting distributed systems, ML infrastructure, and robotics — where reliability in the real world matters more than performance in a demo.</p>
+                    <p>Open to full-time opportunities starting December 2026.</p>
+                </div>
                 <div class="contact-links">
                     <a href="mailto:sreenivasan.sh@northeastern.edu">Email</a>
                     <a href="https://www.linkedin.com/in/shyam-sreenivasan/" target="_blank">LinkedIn</a>
@@ -527,7 +540,7 @@
                 <div class="summary-item">
                     <div class="degree">Master of Science in Robotics</div>
                     <div class="institution">Northeastern University, Boston, MA, USA</div>
-                    <div class="year">2025 – 2027 | GPA: 3.7/4.0</div>
+                    <div class="year">Sept 2025 – Dec 2026 | GPA: 3.7/4.0</div>
                     <div class="summary-description">
                         <strong>Coursework:</strong> Mobile Robotics, Reinforcement Learning, Robot Mechanics and Control, Robot Sensing and Navigation
                     </div>
