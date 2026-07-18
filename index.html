@@ -30,7 +30,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
             pointer-events: none;
@@ -45,24 +45,47 @@
             z-index: 1;
         }
 
-        header {
-            display: flex;
-            align-items: center;
-            gap: 50px;
+        .banner-header {
             margin-bottom: 100px;
-            padding-bottom: 50px;
             border-bottom: 3px solid rgba(99, 102, 241, 0.2);
+            padding-bottom: 30px;
+        }
+
+        .banner {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            position: relative;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .profile-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            margin-top: -50px;
+            padding: 0 10px;
         }
 
         .profile-photo {
             flex-shrink: 0;
-            width: 160px;
-            height: 160px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(99, 102, 241, 0.6);
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+            border: 4px solid #0a0e27;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.6), 0 0 30px rgba(99, 102, 241, 0.3);
+            position: relative;
+            z-index: 1;
         }
+
 
         .header-text {
             display: flex;
@@ -513,26 +536,31 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <img class="profile-photo" src="profilepic.png" alt="Shyam Sreenivasan">
-            <div class="header-text">
-                <h1>Shyam Sreenivasan</h1>
-                <p class="subtitle">Lead Software Engineer · Data, ML &amp; Robotics Infrastructure · Distributed Systems · 7 yrs production · MS Robotics '26</p>
-                <div class="about-me">
-                    <p>Most teams can build the system. The part that breaks at scale—pipelines under load, observability that catches failures before users do, infrastructure that survives a 10× spike—that's where I've spent the last 7 years.</p>
-                    <p>At Giottus, I joined a sub-10 person team and helped scale a cryptocurrency trading platform to over 1 million customers. I built Kafka-based event pipelines, Kubernetes microservices, observability systems, and real-time WebSocket/gRPC infrastructure supporting production workloads with 99.9% uptime. I later led the team, owning delivery, mentoring engineers, and driving execution across multiple initiatives. At CloudFabrix, I built core ML platform components: ingestion frameworks, clustering pipelines that cut alert noise by ~90%, and model registry tooling before the category existed.</p>
-                    <p>Now completing an MS in Robotics at Northeastern (Dec 2026) — shipping at the intersection of systems and perception. Targeting distributed systems, ML infrastructure, and robotics — where reliability in the real world matters more than performance in a demo.</p>
-                    <p>Open to full-time opportunities starting December 2026.</p>
-                </div>
-                <div class="contact-links">
-                    <a href="mailto:sreenivasan.sh@northeastern.edu">Email</a>
-                    <a href="https://www.linkedin.com/in/shyam-sreenivasan/" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/shyam-sreenivasan" target="_blank">GitHub</a>
-                    <a href="https://medium.com/@shyamsreeni.612" target="_blank">Medium</a>
-                    <a href="https://www.youtube.com/@minuteml9114" target="_blank">YouTube</a>
+        <div class="banner-header">
+            <div class="banner">
+                <img src="banner.png" alt="Scaled to 1M users. 99.9% uptime. Now building for AI and Robotics.">
+            </div>
+            <div class="profile-row">
+                <img class="profile-photo" src="profilepic.png" alt="Shyam Sreenivasan">
+                <div class="header-text" style="padding-top: 60px;">
+                    <h1>Shyam Sreenivasan</h1>
+                    <p class="subtitle">Lead Software Engineer · Data, ML &amp; Robotics Infrastructure · Distributed Systems · 7 yrs production · MS Robotics '26</p>
                 </div>
             </div>
-        </header>
+            <div class="about-me" style="margin-top: 20px;">
+                <p>Most teams can build the system. The part that breaks at scale—pipelines under load, observability that catches failures before users do, infrastructure that survives a 10× spike—that's where I've spent the last 7 years.</p>
+                <p>At Giottus, I joined a sub-10 person team and helped scale a cryptocurrency trading platform to over 1 million customers. I built Kafka-based event pipelines, Kubernetes microservices, observability systems, and real-time WebSocket/gRPC infrastructure supporting production workloads with 99.9% uptime. I later led the team, owning delivery, mentoring engineers, and driving execution across multiple initiatives. At CloudFabrix, I built core ML platform components: ingestion frameworks, clustering pipelines that cut alert noise by ~90%, and model registry tooling before the category existed.</p>
+                <p>Now completing an MS in Robotics at Northeastern (Dec 2026) — shipping at the intersection of systems and perception. Targeting distributed systems, ML infrastructure, and robotics — where reliability in the real world matters more than performance in a demo.</p>
+                <p>Open to full-time opportunities starting December 2026.</p>
+            </div>
+            <div class="contact-links" style="margin-top: 20px;">
+                <a href="mailto:sreenivasan.sh@northeastern.edu">Email</a>
+                <a href="https://www.linkedin.com/in/shyam-sreenivasan/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/shyam-sreenivasan" target="_blank">GitHub</a>
+                <a href="https://medium.com/@shyamsreeni.612" target="_blank">Medium</a>
+                <a href="https://www.youtube.com/@minuteml9114" target="_blank">YouTube</a>
+            </div>
+        </div>
 
         <div class="profile-summary">
             <div class="summary-card">
